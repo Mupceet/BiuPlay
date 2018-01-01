@@ -943,5 +943,4 @@
     <string name="wifi_connect_second_step">2. 在首页点击“点击连接设备”>“WLAN 无线连接后”并按提示操作。</string>
     <string name="wlan_appzone_title">WLAN 免费时长专区</string>
     <string name="wlan_autoupdate_text_new_modify">在连接 WLAN 网络且手机空闲时，自动将应用更新至最新版本。</string>
-    <string name="title_activity_splash">SplashActivity</string>
 </resources>
