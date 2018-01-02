@@ -1,8 +1,6 @@
 package com.mupceet.hwplay.utils;
 
 import android.app.Activity;
-import android.content.Context;
-import android.util.Log;
 
 import java.util.Stack;
 
@@ -40,6 +38,7 @@ public class AppActivityManager {
         }
         mActivityStack.add(activity);
     }
+
     /**
      * 移除Activity到堆外
      */
@@ -100,17 +99,7 @@ public class AppActivityManager {
      * 退出应用程序
      */
     @SuppressWarnings("deprecation")
-    public void AppExit(Context context) {
-//        try {
-//            killAllActivity();
-//            android.app.ActivityManager activityMgr = (android.app.ActivityManager) context
-//                    .getSystemService(Context.ACTIVITY_SERVICE);
-//            activityMgr.restartPackage(context.getPackageName());
-//            System.exit(0);
-//        } catch (Exception e) {
-//            Log.e("AppActivityManager",""+e);
-//        }
-
+    public void exitApp() {
         // 1. 先清除所有 Activity
         killAllActivity();
         // 2. 退出当前进程

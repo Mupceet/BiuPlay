@@ -61,7 +61,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      * 初始化布局
      */
     protected abstract void initLayout();
-    // example:
+    /// example:
     // protected void initLayout() {
     //     setContentView(R.layout.activity_home);
     // }
@@ -70,7 +70,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      * 初始化View
      */
     protected abstract void initView();
-    // example:
+    /// example:
     // protected void initView() {
     //     sp = getSharedPreferences("appStore",Context.MODE_PRIVATE);
     //     if(!sp.getBoolean("isFirst",true)){
