@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="App_Threme" parent="Theme.AppCompat">
+    <style name="App_Theme" parent="Theme.AppCompat">
         <item name="android:windowNoTitle">true</item>
     </style>
 

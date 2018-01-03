@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 
+import com.gyf.barlibrary.ImmersionBar;
 import com.mupceet.hwplay.R;
 import com.mupceet.hwplay.utils.AppActivityManager;
 
@@ -17,13 +18,18 @@ import butterknife.ButterKnife;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
+    private ImmersionBar mImmersionBar;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         AppActivityManager.getInstance().addActivity(this);
-        initLayout();
+        setContentView(setLayoutId());
         ButterKnife.bind(this);
+        if (isImmersionBarEnabled()) {
+            initImmersionBar();
+        }
+
         initView();
     }
 
@@ -32,6 +38,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onDestroy() {
         AppActivityManager.getInstance().removeActivity(this);
         super.onDestroy();
+        if (mImmersionBar != null) {
+            mImmersionBar.destroy();
+        }
     }
 
     @Override
@@ -60,11 +69,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**
      * 初始化布局
      */
-    protected abstract void initLayout();
-    /// example:
-    // protected void initLayout() {
-    //     setContentView(R.layout.activity_home);
-    // }
+    protected abstract int setLayoutId();
 
     /**
      * 初始化View
@@ -78,4 +83,21 @@ public abstract class BaseActivity extends AppCompatActivity {
     //         finish();
     //     }
     // }
+
+    /**
+     * 是否可以使用沉浸式
+     * Is immersion bar enabled boolean.
+     *
+     * @return the boolean
+     */
+    protected boolean isImmersionBarEnabled() {
+        return true;
+    }
+
+    private void initImmersionBar() {
+        mImmersionBar = ImmersionBar.with(this);
+        mImmersionBar
+                .statusBarDarkFont(true)
+                .init();
+    }
 }

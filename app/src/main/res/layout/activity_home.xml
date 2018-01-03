@@ -2,12 +2,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btn_to_main"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="To Main"/>
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tab_column_height"
+        app:tabIndicatorColor="@color/tab_selected_line_def"
+        app:tabSelectedTextColor="@color/tab_text_selected_def"
+        app:tabTextColor="@color/tab_text_normal_def"
+        app:tabTextAppearance="@style/CustomTabLayoutTextAppearance"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/main_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>
