@@ -235,7 +235,7 @@ public class StateLayoutManager {
         }
     }
 
-    public static Builder newBuilder(Context context) {
+    public static Builder with(Context context) {
         return new Builder(context);
     }
 

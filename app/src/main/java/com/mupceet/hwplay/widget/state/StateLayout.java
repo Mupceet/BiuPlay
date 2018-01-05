@@ -24,17 +24,17 @@ public class StateLayout extends FrameLayout {
     public static final int LAYOUT_CONTENT_ID = 2;
 
     /**
-     * 异常id
+     * 异常id，可重试
      */
     public static final int LAYOUT_ERROR_ID = 3;
 
     /**
-     * 网络异常id
+     * 网络异常id，可重试
      */
     public static final int LAYOUT_NETWORK_ERROR_ID = 4;
 
     /**
-     * 空数据id
+     * 空数据id，可重试
      */
     public static final int LAYOUT_EMPTY_ID = 5;
 
@@ -228,7 +228,7 @@ public class StateLayout extends FrameLayout {
             case LAYOUT_NETWORK_ERROR_ID:
                 if (mStateLayoutManager.netWorkErrorVs != null) {
                     View view = mStateLayoutManager.netWorkErrorVs.inflate();
-                    retryLoad(view, mStateLayoutManager.netWorkErrorRetryViewId);
+                    initRetyrView(view, mStateLayoutManager.netWorkErrorRetryViewId);
                     layoutSparseArray.put(id, view);
                     isShow = true;
                 } else {
@@ -241,7 +241,7 @@ public class StateLayout extends FrameLayout {
                     if (mStateLayoutManager.errorLayout != null) {
                         mStateLayoutManager.errorLayout.setView(view);
                     }
-                    retryLoad(view, mStateLayoutManager.errorRetryViewId);
+                    initRetyrView(view, mStateLayoutManager.errorRetryViewId);
                     layoutSparseArray.put(id, view);
                     isShow = true;
                 } else {
@@ -254,7 +254,7 @@ public class StateLayout extends FrameLayout {
                     if (mStateLayoutManager.emptyDataLayout != null) {
                         mStateLayoutManager.emptyDataLayout.setView(view);
                     }
-                    retryLoad(view, mStateLayoutManager.emptyDataRetryViewId);
+                    initRetyrView(view, mStateLayoutManager.emptyDataRetryViewId);
                     layoutSparseArray.put(id, view);
                     isShow = true;
                 } else {
@@ -270,7 +270,7 @@ public class StateLayout extends FrameLayout {
     /**
      * 重试加载
      */
-    private void retryLoad(View view, int id) {
+    private void initRetyrView(View view, int id) {
         View retryView = view.findViewById(mStateLayoutManager.retryViewId != 0 ? mStateLayoutManager.retryViewId : id);
         if (retryView == null || mStateLayoutManager.onRetryListener == null) {
             return;
