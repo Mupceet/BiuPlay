@@ -46,6 +46,17 @@ public class HomeActivity extends BaseActivity {
 
         mTabLayout.setupWithViewPager(mMainViewpager);
         mTabLayout.setTabMode(TabLayout.MODE_FIXED);
+
+        mMainViewpager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener(){
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                if (position == 0) {
+                    RecommendFragment recommendFragment = (RecommendFragment) FragmentFactory.createFragment(position);
+                    recommendFragment.show();
+                }
+            }
+        });
     }
 
 }

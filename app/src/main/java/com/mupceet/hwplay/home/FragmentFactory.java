@@ -26,7 +26,7 @@ public class FragmentFactory {
         if (fragment == null) {
             switch (index) {
                 case TAB_RECOMMEND:
-                    fragment = new Fragment1();
+                    fragment = new RecommendFragment();
                     break;
                 case TAB_CATEGORY:
                     fragment = new Fragment1();
