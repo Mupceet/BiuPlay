@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import com.mupceet.hwplay.base.BaseFragment;
 
+import static com.mupceet.hwplay.widget.state.StateView.STATE_SUCCESS;
+
 /**
  * Created by lgz on 1/3/18.
  */

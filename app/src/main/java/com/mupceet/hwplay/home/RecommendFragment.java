@@ -2,22 +2,13 @@ package com.mupceet.hwplay.home;
 
 import android.os.Bundle;
 import android.os.SystemClock;
-import android.support.annotation.IntDef;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import com.mupceet.hwplay.R;
 import com.mupceet.hwplay.base.BaseFragment;
-import com.mupceet.hwplay.utils.UiUtils;
 
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
+import static com.mupceet.hwplay.widget.state.StateView.STATE_ERROR;
 
 /**
  * Created by lgz on 1/3/18.
