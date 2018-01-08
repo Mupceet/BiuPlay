@@ -3,6 +3,8 @@ package com.mupceet.hwplay.home;
 import android.support.v4.app.Fragment;
 import android.util.SparseArray;
 
+import com.mupceet.hwplay.base.BaseFragment;
+
 /**
  * Created by lgz on 1/3/18.
  */
@@ -18,27 +20,27 @@ public class FragmentFactory {
     public static final int TAB_ME = 4;
 
 
-    private static SparseArray<Fragment> mFragments = new SparseArray<>();
+    private static SparseArray<BaseFragment> mFragments = new SparseArray<>();
 
     public static Fragment createFragment(int index) {
         // TODO: 1/3/18 根据需求写BaseFragment，然后创建时创建具体的Fragment，这里先使用Fragment代替一下
-        Fragment fragment = mFragments.get(index);
+        BaseFragment fragment = mFragments.get(index);
         if (fragment == null) {
             switch (index) {
                 case TAB_RECOMMEND:
                     fragment = new RecommendFragment();
                     break;
                 case TAB_CATEGORY:
-                    fragment = new Fragment1();
+                    fragment = new CategoryFragment();
                     break;
                 case TAB_TOP:
-                    fragment = new Fragment1();
+                    fragment = new TopFragment();
                     break;
                 case TAB_APP_MANAGER:
-                    fragment = new Fragment1();
+                    fragment = new AppManagerFragment();
                     break;
                 case TAB_ME:
-                    fragment = new Fragment1();
+                    fragment = new MyFragment();
                     break;
                 default:
                     throw new IllegalArgumentException("Not support this type fragment");
