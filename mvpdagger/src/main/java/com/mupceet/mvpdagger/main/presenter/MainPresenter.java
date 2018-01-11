@@ -1,7 +1,11 @@
 package com.mupceet.mvpdagger.main.presenter;
 
+import android.util.Log;
+
 import com.mupceet.mvpdagger.main.contract.MainContract;
 import com.mupceet.mvpdagger.main.model.User;
+
+import javax.inject.Inject;
 
 
 /**
@@ -11,7 +15,10 @@ import com.mupceet.mvpdagger.main.model.User;
 public class MainPresenter extends MainContract.PresenterImpl<MainContract.View>
         implements MainContract.Presenter {
 
-    public MainPresenter() {
+    @Inject
+    public MainPresenter(MainContract.View view) {
+        // 假设对View有一个操作
+        Log.e("MainPresenter: ", view.toString());
     }
 
     @Override
