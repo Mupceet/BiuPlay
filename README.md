@@ -6,3 +6,4 @@
 2. [App一键退出](./doc/ExitApp.md)
 3. [AndroidUtilCode](https://github.com/Blankj/AndroidUtilCode)
 4. [MVP学习](./doc/MVPLearning.md)
+5. [Dagger2学习](./doc/Dagger2Learning.md)
