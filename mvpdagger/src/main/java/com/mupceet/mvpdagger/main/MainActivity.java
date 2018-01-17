@@ -9,8 +9,10 @@ import android.widget.EditText;
 import com.mupceet.mvpdagger.BaseActivity;
 import com.mupceet.mvpdagger.R;
 import com.mupceet.mvpdagger.main.contract.MainContract;
+import com.mupceet.mvpdagger.main.di.Apple;
 import com.mupceet.mvpdagger.main.di.DaggerMainComponent;
 import com.mupceet.mvpdagger.main.di.MainModule;
+import com.mupceet.mvpdagger.main.di.scope.Type;
 import com.mupceet.mvpdagger.main.model.User;
 import com.mupceet.mvpdagger.main.presenter.MainPresenter;
 
@@ -29,6 +31,10 @@ public class MainActivity extends BaseActivity implements MainContract.View {
     // 这里要注意使用 MainPresenter
     @Inject
     public MainPresenter mPresenter;
+
+    @Inject
+    @Type("color")
+    public Apple mApple;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
