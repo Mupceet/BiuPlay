@@ -1,5 +1,6 @@
 package com.mupceet.mvpdagger.main;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -11,8 +12,8 @@ import com.mupceet.mvpdagger.BaseActivity;
 import com.mupceet.mvpdagger.R;
 import com.mupceet.mvpdagger.main.contract.MainContract;
 import com.mupceet.mvpdagger.main.di.Apple;
-import com.mupceet.mvpdagger.main.di.component.DaggerMainComponent;
 import com.mupceet.mvpdagger.main.di.MainModule;
+import com.mupceet.mvpdagger.main.di.component.DaggerMainComponent;
 import com.mupceet.mvpdagger.main.di.scope.Type;
 import com.mupceet.mvpdagger.main.model.User;
 import com.mupceet.mvpdagger.main.presenter.MainPresenter;
@@ -67,6 +68,13 @@ public class MainActivity extends BaseActivity implements MainContract.View {
                 String pwd = mEtPassword.getText().toString();
                 User user = new User(name, pwd);
                 mPresenter.login(user);
+            }
+        });
+
+        findViewById(R.id.btn_next_activity).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, MainActivity2.class));
             }
         });
 
