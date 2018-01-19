@@ -2,6 +2,7 @@ package com.mupceet.mvpdagger.main;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -10,7 +11,7 @@ import com.mupceet.mvpdagger.BaseActivity;
 import com.mupceet.mvpdagger.R;
 import com.mupceet.mvpdagger.main.contract.MainContract;
 import com.mupceet.mvpdagger.main.di.Apple;
-import com.mupceet.mvpdagger.main.di.DaggerMainComponent;
+import com.mupceet.mvpdagger.main.di.component.DaggerMainComponent;
 import com.mupceet.mvpdagger.main.di.MainModule;
 import com.mupceet.mvpdagger.main.di.scope.Type;
 import com.mupceet.mvpdagger.main.model.User;
@@ -24,6 +25,7 @@ import javax.inject.Inject;
 
 public class MainActivity extends BaseActivity implements MainContract.View {
 
+    private static final String TAG = "MainActivity";
     private EditText mEtName;
     private EditText mEtPassword;
     private Button mBtnLogin;
@@ -36,6 +38,10 @@ public class MainActivity extends BaseActivity implements MainContract.View {
     @Type("color")
     public Apple mApple;
 
+    @Inject
+    @Type("color")
+    public Apple mApple1;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +52,9 @@ public class MainActivity extends BaseActivity implements MainContract.View {
                 .mainModule(new MainModule(this))
                 .build()
                 .inject(this);
+
+        Log.e(TAG, mApple.toString());
+        Log.e(TAG, mApple1.toString());
         mPresenter.attachView(this);
 
         mEtName = findViewById(R.id.et_name);
