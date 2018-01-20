@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 27
-    buildToolsVersion '26.0.3'
+    // 去除了 buildToolsVersion 项
     defaultConfig {
         applicationId "com.mupceet.hwplay"
         minSdkVersion 24
@@ -10,6 +10,11 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        // 为了更好地在多API级别支持Java 8, 该选项应该被删除
+//        jackOptions {
+//            enabled true
+//        }
     }
     buildTypes {
         release {
@@ -17,7 +22,39 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    // Debug 版本的构建自动匹配 Library 的 debug 版本
+
+
+    // Error:All flavors must now belong to a named flavor dimension.
+    // 强制进行了要求
+    flavorDimensions "minApi"
+    productFlavors {
+        minApi23 {
+            dimension "minApi"
+            minSdkVersion 23
+        }
+
+        minApi24 {
+            dimension "minApi"
+            minSdkVersion 24
+        }
+    }
+
+    // 如果不想使用最新的这个支持Java8特性，可以设置以下选项：
+//    enableDesugar=false
+
+    // 支持Java8特性,该特性支持多个API级别
+    // 但对于低级别的支持是有限的。
+    // 具体查看：https://developer.android.google.cn/studio/write/java8-support.html
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
+
+
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
@@ -30,7 +67,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
-
     implementation 'pub.devrel:easypermissions:1.1.1'
     implementation 'com.gyf.barlibrary:barlibrary:2.3.0'
     implementation 'com.blankj:utilcode:1.10.0'
